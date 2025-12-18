@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-N002",
+  "testCaseName": "Invalid Email Format Rejection",
+  "preconditions": {
+    "userLoggedIn": true,
+    "onContactCreationScreen": true
+  },
+  "contactData": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "1234567890",
+    "company": "Acme Corp",
+    "position": "Manager",
+    "email": "invalidemail.com",  
+    "emailType": "Personal",
+    "category": "Lead"
+  },
+  "expectedResult": {
+    "errorMessage": "The email format is invalid."
+  },
+  "postConditions": {
+    "contactSaved": false
+  }
+}
