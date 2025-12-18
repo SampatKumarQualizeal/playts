@@ -1,0 +1,31 @@
+export const btnPriority: string = "//label[text()='Priority']/following-sibling::div[@role='listbox']";
+export const txtTags: string = "//div[@class='ui fluid multiple search selection dropdown']//input[@type='text']";
+export const txtName: string = "//label[text()='Name']/following-sibling::div//input";
+export const btnAccess: string = "//label[text()='Access']/following-sibling::div//button";
+export const btnAllowUsers: string = "//label[text()='Access']/following-sibling::div//div[@role='listbox']";
+export const txtStreetAddress: string = "//input[@placeholder='Street Address']";
+export const txtCity: string = "//input[@placeholder='City']";
+export const txtStateNCountry: string = "//input[@placeholder='State / County']";
+export const btnAddressCountry: string = "//label[text()='Address']/following-sibling::div//i[@class='dropdown icon']";
+export const btnAddressAdd: string = "//label[text()='Address']/following-sibling::div//button";
+export const txtPostCode: string = "//input[@placeholder='Post Code']";
+export const btnPhoneCountry: string = "//label[text()='Phone']/following-sibling::div//div[@role='listbox']";
+export const txtPhoneNumber: string = "//input[@placeholder='Number']";
+export const txtHomeNWorkNmobile: string = "//input[@placeholder='Home, Work, Mobile...']";
+export const btnPhoneAdd: string = "//label[text()='Phone']/following-sibling::div//button";
+export const txtEmail: string = "//input[@placeholder='Email address']";
+export const txtEmailType: string = "//input[@placeholder='Personal email, Business, Alt...']";
+export const btnEmailAdd: string = "//label[text()='Email']/following-sibling::div//button";
+export const txtDescription: string = "//textarea[@name='description']";
+export const txtIndustry: string = "input[name='industry']";
+export const txtNoOfEmployees: string = "input[name='num_employees']";
+export const txtStockSymbol: string = "input[name='symbol']";
+export const txtAnnualRevenue: string = "input[name='annual_revenue']";
+export const btnStatus: string = "//label[text()='Status']/following-sibling::div[@role='listbox']";
+export const btnSource: string = "//label[text()='Source']/following-sibling::div[@role='listbox']";
+export const btnCategory: string = "//label[text()='Category']/following-sibling::div[@role='listbox']";
+export const txtVatNumber: string = "input[name='vat_number']";
+export const txtIdentifier: string = "input[name='identifier']";
+
+
+export const LengthErrorMsg: string = "//div[@class='ui error floating icon message']";

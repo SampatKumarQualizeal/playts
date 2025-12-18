@@ -1,0 +1,17 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/allure-results/
+/allure-report
+# TypeScript build artifacts
+/dist/
+/*.tsbuildinfo
+
+# Editor folders
+.vscode/
+.idea/
+
+# Playwright test artifacts
+/test-results/
+/playwright-report/
