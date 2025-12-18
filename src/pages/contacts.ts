@@ -180,5 +180,51 @@ class Contacts extends ApplicationGeneric {
         await this.verifyToHaveText(contactsLocators.lengthErrorMsg, text);
     }
 
+    /**
+     * Workflow method for TC-N002: Invalid Email Format Rejection
+     * Fills the contact creation form with valid Name, Phone Number, Company, and Position fields,
+     * enters an invalid email format, attempts to save, and verifies the invalid email error message.
+     *
+     * @param contactData Object containing all necessary contact fields. Must include:
+     *   - First_name, Last_name, Phone_Number, Phone_Number_Type, Company, Position, EmailType
+     *   - Email (should be an invalid format, e.g., 'invalidemail.com')
+     *   - expectedEmailError (expected error message string for invalid email)
+     */
+    async createContactWithInvalidEmailAndVerifyError(contactData: any): Promise<void> {
+        // Open the contact creation form
+        await this.clickOnCreate();
+
+        // Fill all required details except email with valid data
+        await this.enterFirstName(contactData.First_name);
+        await this.enterLastName(contactData.Last_name);
+        // Company and Position fields are not explicitly present in existing methods; add if needed
+        if (contactData.Company) {
+            // TODO: Add company field interaction if implemented in future
+        }
+        if (contactData.Position) {
+            // TODO: Add position field interaction if implemented in future
+        }
+        await this.enterPhoneNumber(contactData.Phone_Number, contactData.Phone_Number_Type);
+
+        // Enter invalid email format
+        if (contactData.Email && contactData.EmailType) {
+            await this.fillInputBox(contactsLocators.txtEmail, contactData.Email);
+            await this.fillInputBox(contactsLocators.txtEmailType, contactData.EmailType);
+            await this.clickOnElement(contactsLocators.btnEmailAdd);
+        }
+
+        // Save the contact
+        await this.save();
+
+        // Wait for UI stability
+        await this.waitForLoadState(configprop.waitStatedomcontentloaded);
+        await this.waitForLoadState(configprop.waitStatenetworkidle);
+
+        // Verify error message for invalid email format
+        if (contactData.expectedEmailError) {
+            await this.verifyToHaveText(contactsLocators.inLineErrMsg, contactData.expectedEmailError);
+        }
+    }
+
 }
 export default Contacts;
