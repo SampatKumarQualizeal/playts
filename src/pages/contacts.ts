@@ -180,5 +180,44 @@ class Contacts extends ApplicationGeneric {
         await this.verifyToHaveText(contactsLocators.lengthErrorMsg, text);
     }
 
+    /**
+     * Workflow: Fill contact form with valid data except for an invalid email format, submit, and verify error message for invalid email.
+     * @param contactData - Object containing Name, Phone Number, Company, Position, and invalid Email fields.
+     * @param expectedErrorMsg - The error message expected for invalid email format.
+     */
+    async createContactWithInvalidEmailAndVerifyError(contactData: any, expectedErrorMsg: string): Promise<void> {
+        // Fill First Name, Last Name, Company, Position, Phone Number (if provided)
+        if (contactData.First_name !== undefined) {
+            await this.fillInputBox(contactsLocators.txtFirstName, contactData.First_name);
+        }
+        if (contactData.Last_name !== undefined) {
+            await this.fillInputBox(contactsLocators.txtLastName, contactData.Last_name);
+        }
+        if (contactData.Company !== undefined) {
+            await this.fillInputBox(contactsLocators.txtCompany, contactData.Company);
+        }
+        if (contactData.Position !== undefined) {
+            // TODO: Replace with actual locator for Position if/when available
+            // await this.fillInputBox(contactsLocators.txtPosition, contactData.Position);
+        }
+        if (contactData.Phone_Number !== undefined && contactData.Phone_Number_Type !== undefined) {
+            await this.fillInputBox(contactsLocators.phoneNumber, contactData.Phone_Number);
+            await this.fillInputBox(contactsLocators.phoneNumberType, contactData.Phone_Number_Type);
+            await this.clickOnElement(contactsLocators.btnPhoneAdd);
+        }
+        // Fill Email with invalid format and type (if provided)
+        if (contactData.Email !== undefined) {
+            await this.fillInputBox(contactsLocators.txtEmail, contactData.Email);
+        }
+        if (contactData.EmailType !== undefined) {
+            await this.fillInputBox(contactsLocators.txtEmailType, contactData.EmailType);
+        }
+        await this.clickOnElement(contactsLocators.btnEmailAdd);
+        // Save the form
+        await this.clickOnElement(commonLocators.btnSave);
+        // Wait for error message and verify
+        await this.verifyToHaveText(contactsLocators.inLineErrMsg, expectedErrorMsg);
+    }
+
 }
 export default Contacts;
