@@ -1,0 +1,114 @@
+// Test Data for TC-N001: Create a new contact
+// Purpose: Valid and boundary test data for contact creation in CRM
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation with all required fields",
+    "contact": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1234567890",
+      "company": "Acme Corp",
+      "jobTitle": "Sales Manager",
+      "address": "123 Main St, Springfield",
+      "city": "Springfield",
+      "state": "Illinois",
+      "country": "USA",
+      "postalCode": "62701",
+      "notes": "Lead from conference",
+      "status": "Active",
+      "source": "Web Form"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary: Maximum length for first and last name (50 chars)",
+    "contact": {
+      "firstName": "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", // 50 chars
+      "lastName": "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", // 50 chars
+      "email": "max.length@example.com",
+      "phone": "+1987654321",
+      "company": "MaxLength Inc",
+      "jobTitle": "Director",
+      "address": "456 Elm St, Metropolis",
+      "city": "Metropolis",
+      "state": "New York",
+      "country": "USA",
+      "postalCode": "10001",
+      "notes": "Testing max length",
+      "status": "Active",
+      "source": "Import"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary: Minimum required fields only",
+    "contact": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phone": "",
+      "company": "",
+      "jobTitle": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "country": "",
+      "postalCode": "",
+      "notes": "",
+      "status": "Active",
+      "source": "Manual Entry"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge: International characters in name and address",
+    "contact": {
+      "firstName": "Zoë",
+      "lastName": "Šimůnek",
+      "email": "zoe.simunek@example.cz",
+      "phone": "+420123456789",
+      "company": "Česká Firma",
+      "jobTitle": "Vývojář",
+      "address": "Václavské náměstí 1, Praha",
+      "city": "Praha",
+      "state": "Praha",
+      "country": "Česká republika",
+      "postalCode": "11000",
+      "notes": "Czech diacritics test",
+      "status": "Active",
+      "source": "Referral"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge: Numeric and special characters in notes",
+    "contact": {
+      "firstName": "Mike",
+      "lastName": "O'Neil",
+      "email": "mike.oneil+test@example.com",
+      "phone": "+447911123456",
+      "company": "Testers Ltd.",
+      "jobTitle": "QA Lead",
+      "address": "789 Testing Blvd, London",
+      "city": "London",
+      "state": "London",
+      "country": "UK",
+      "postalCode": "EC1A 1BB",
+      "notes": "Test #1234! @2024",
+      "status": "Active",
+      "source": "Event"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "postCondition": "Contact is saved in CRM."
+  }
+]
