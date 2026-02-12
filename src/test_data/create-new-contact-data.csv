@@ -1,0 +1,8 @@
+# Test Data for TC-N001: Create a new contact
+# Each row is a different test scenario for contact creation
+# Columns: testCaseId,description,firstName,lastName,email,phone,company,jobTitle,address,city,state,country,postalCode,notes,status,source,expectedMessage,postCondition
+TC-N001,"Valid contact creation with all required fields",John,Doe,john.doe@example.com,+1234567890,Acme Corp,Sales Manager,"123 Main St, Springfield",Springfield,Illinois,USA,62701,"Lead from conference",Active,"Web Form","Contact created successfully.","Contact is saved in CRM."
+TC-N001,"Boundary: Maximum length for first and last name (50 chars)",Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,max.length@example.com,+1987654321,MaxLength Inc,Director,"456 Elm St, Metropolis",Metropolis,New York,USA,10001,"Testing max length",Active,Import,"Contact created successfully.","Contact is saved in CRM."
+TC-N001,"Boundary: Minimum required fields only",Jane,Smith,jane.smith@example.com,,,,,,,,,,Active,"Manual Entry","Contact created successfully.","Contact is saved in CRM."
+TC-N001,"Edge: International characters in name and address",Zoë,Šimůnek,zoe.simunek@example.cz,+420123456789,Česká Firma,Vývojář,"Václavské náměstí 1, Praha",Praha,Praha,Česká republika,11000,"Czech diacritics test",Active,Referral,"Contact created successfully.","Contact is saved in CRM."
+TC-N001,"Edge: Numeric and special characters in notes",Mike,O'Neil,mike.oneil+test@example.com,+447911123456,Testers Ltd.,QA Lead,"789 Testing Blvd, London",London,London,UK,EC1A 1BB,"Test #1234! @2024",Active,Event,"Contact created successfully.","Contact is saved in CRM."

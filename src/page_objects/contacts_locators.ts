@@ -24,3 +24,16 @@ export const btnSource: string = "//label[text()='Source']/following-sibling::di
 export const btnStatus: string = "//label[text()='Status']/following-sibling::div[@role='listbox']";
 
 export const inLineErrMsg: string = "//span[@class='inline-error-msg']";
+
+// NEW LOCATORS ADDED BELOW (per requirements, no duplicates, preserving all existing code)
+
+export const txtFirstNameCss: string = "input[name='first_name']";
+export const txtLastNameCss: string = "input[name='last_name']";
+export const txtEmailValue: string = "input[name='value']"; // Email Address Input
+export const txtEmailTypeName: string = "input[name='name']"; // Email Type Input
+export const btnAddEmail: string = "button.ui.tiny.basic.icon.button";
+export const drpCategory: string = "div[role='listbox'][name='category']";
+export const btnSave: string = "//button[contains(@class, 'linkedin button') and contains(., 'Save')]";
+export const btnCreateContact: string = "//button[contains(@class, 'linkedin button') and contains(., 'Create')]";
+export const lnkContacts: string = "a[href='/contacts']";
+export const lblSuccessMessage: string = "//div[contains(@class, 'ui positive message')]"; // TODO: Replace with actual locator for success message

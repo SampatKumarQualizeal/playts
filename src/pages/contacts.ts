@@ -180,5 +180,47 @@ class Contacts extends ApplicationGeneric {
         await this.verifyToHaveText(contactsLocators.lengthErrorMsg, text);
     }
 
+    /**
+     * Creates a new contact with the provided details and verifies the success message.
+     * This method encapsulates the full workflow: navigation, data entry, save, and validation.
+     * @param objContactData An object containing firstName, lastName, email, emailType, category, and any other required fields.
+     * @param expectedMessage The expected success message after saving.
+     */
+    async createContactAndVerify(objContactData: any, expectedMessage: string): Promise<void> {
+        // Navigate to Contacts page
+        await this.clickOnElement(contactsLocators.lnkContacts);
+        await this.waitForPageLoadDomcontentloaded();
+
+        // Click on 'Create' button to open new contact form
+        await this.clickOnElement(contactsLocators.btnCreateContact);
+        await this.waitForPageLoadDomcontentloaded();
+
+        // Fill in contact details
+        if(objContactData.firstName) {
+            await this.fillInputBox(contactsLocators.txtFirstName, objContactData.firstName);
+        }
+        if(objContactData.lastName) {
+            await this.fillInputBox(contactsLocators.txtLastName, objContactData.lastName);
+        }
+        if(objContactData.email && objContactData.emailType) {
+            await this.fillInputBox(contactsLocators.txtEmail, objContactData.email);
+            await this.fillInputBox(contactsLocators.txtEmailType, objContactData.emailType);
+            await this.clickOnElement(contactsLocators.btnAddEmail);
+        }
+        if(objContactData.category) {
+            await this.selectItemFromDropdown(contactsLocators.drpCategory, undefined, objContactData.category);
+        }
+        // Add additional fields as needed (e.g., phone, company, etc.)
+
+        // Click Save
+        await this.clickOnElement(contactsLocators.btnSave);
+        await this.waitForLoadState(configprop.waitStatenetworkidle);
+        await this.waitForLoadState(configprop.waitStatedomcontentloaded);
+
+        // Verify success message
+        await this.verifyElementIsVisible(contactsLocators.lblSuccessMessage);
+        await this.verifyElementContainsText(contactsLocators.lblSuccessMessage, expectedMessage);
+    }
+
 }
 export default Contacts;
